@@ -3,11 +3,19 @@ import 'package:provider/provider.dart';
 import 'package:provider_todo_app/Model/task_model.dart';
 import 'package:provider_todo_app/Provider/task_provider.dart';
 
+import '../Widgets/text_field.dart';
+
 class EditTask extends StatefulWidget {
   final String title;
   final String description;
   final int id;
-  const EditTask({super.key, required this.title, required this.description, required this.id});
+  
+  const EditTask({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.id,
+  });
 
   @override
   State<EditTask> createState() => _EditTaskState();
@@ -32,36 +40,14 @@ class _EditTaskState extends State<EditTask> {
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: Column(
           children: [
-            TextField(
+            MyTextfield(
               controller: titleController,
-              textCapitalization: TextCapitalization.words,
-              decoration: InputDecoration(
-                hintText: 'Enter title',
-                focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(10)),
-                enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(10)),
-              ),
+              hint: 'Enter title',
             ),
             const SizedBox(
               height: 20,
             ),
-            TextField(
-              controller: descController,
-              textCapitalization: TextCapitalization.words,
-              maxLines: null,
-              decoration: InputDecoration(
-                hintText: 'Enter Description',
-                focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(10)),
-                enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(10)),
-              ),
-            ),
+            MyTextfield(controller: descController, hint: 'Enter Description'),
             const SizedBox(
               height: 20,
             ),
@@ -74,7 +60,7 @@ class _EditTaskState extends State<EditTask> {
                           description: descController.text));
                   Navigator.pop(context);
                 },
-                child: Text('Update Task'))
+                child: const Text('Update'))
           ],
         ),
       ),
