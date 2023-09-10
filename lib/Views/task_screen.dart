@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:provider_todo_app/Provider/task_provider.dart';
 
 import 'add_task.dart';
+import 'edit_task.dart';
 
 class TaskScreen extends StatefulWidget {
   const TaskScreen({super.key});
@@ -45,7 +46,10 @@ class _TaskScreenState extends State<TaskScreen> {
                         final task = tasks[index];
                         return Card(
                           child: ListTile(
-                            title: Text(task.title),
+                            title: Text(
+                              task.title,
+                              style: Theme.of(context).textTheme.headlineSmall,
+                            ),
                             subtitle: Text(task.description),
                             trailing: IconButton(
                               onPressed: () {
@@ -56,6 +60,16 @@ class _TaskScreenState extends State<TaskScreen> {
                                 color: Colors.red,
                               ),
                             ),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => EditTask(
+                                        id: task.id!,
+                                        title: task.title,
+                                        description: task.description,
+                                      )));
+                            },
                           ),
                         );
                       });
