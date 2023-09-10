@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
               backgroundColor: Colors.blue,
               titleTextStyle: TextStyle(fontSize: 24, color: Colors.white),
               iconTheme: IconThemeData(color: Colors.white)),
-          floatingActionButtonTheme: FloatingActionButtonThemeData(
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(
               backgroundColor: Colors.blue, foregroundColor: Colors.white),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
