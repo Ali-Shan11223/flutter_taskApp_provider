@@ -11,7 +11,7 @@ class TaskProvider with ChangeNotifier {
   List<Task> get tasks => _task;
 
   Future<void> fetchTasks() async {
-    await taskDatabase.getTasks();
+    _task = await taskDatabase.getTasks();
     notifyListeners();
   }
 

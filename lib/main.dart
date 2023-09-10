@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:provider_todo_app/Provider/task_provider.dart';
 import 'package:provider_todo_app/Views/task_screen.dart';
 
 void main() {
@@ -10,7 +12,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ChangeNotifierProvider(create: (context) => TaskProvider(),
+    child: MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.light(useMaterial3: true).copyWith(
         appBarTheme: const AppBarTheme(
@@ -19,6 +22,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: const TaskScreen(),
+    ),
     );
   }
 }
